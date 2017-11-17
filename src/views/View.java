@@ -24,23 +24,31 @@ public class View {
     private void showMenu() {
         System.out.println("1. Ver Cartelera");
         System.out.println("2. Ver Salas");
+        System.out.println("3. Añadir película");
     }
 
     private int takeUserInput() {
-        int selectedOption = readUserInput();
+        int selectedOption = readUserInputInt();
 
         while(!checkInput(selectedOption)) {
-            selectedOption = readUserInput();
+            selectedOption = readUserInputInt();
         }
 
         return selectedOption;
     }
 
-    private int readUserInput() {
+    private int readUserInputInt() {
         Scanner reader = new Scanner(System.in);
         int option = reader.nextInt();
 
         return option;
+    }
+
+    private String readUserInputString() {
+        Scanner reader = new Scanner(System.in);
+        String string = reader.nextLine();
+
+        return string;
     }
 
     private boolean checkInput(int option) {
@@ -77,6 +85,34 @@ public class View {
         }
     }
 
+    private void addFilmToBillboard() {
+        Film film = createFilmFromUserInput();
+        cinema.getBillboard().getFilms().add(film);
+    }
+
+    private Film createFilmFromUserInput() {
+        Film film = new Film();
+        System.out.println("Introduce el título de la película:");
+        String title = readUserInputString();
+        film.setTitle(title);
+
+        System.out.println("Introducir director:");
+        String director = readUserInputString();
+        film.setDirector(director);
+
+        System.out.println("Introducir duración:");
+        int minutes = readUserInputInt();
+        film.setMinutes(minutes);
+
+        System.out.println("Introducir edad mínima:");
+        int certificate = readUserInputInt();
+        film.setCertificate(certificate);
+
+        film.setIs3D(false);
+
+        return film;
+    }
+
     private void doSelectedOption(int selectedOption) {
         switch (selectedOption) {
             case Contract.MENU_OPTION_SHOW_BILLBOARD:
@@ -87,6 +123,10 @@ public class View {
                 showRooms();
                 break;
 
+            case Contract.MENU_OPTION_ADD_FILM:
+                addFilmToBillboard();
+                break;
+            
             default:
                 break;
         }
