@@ -1,10 +1,12 @@
 package models;
 
+import utils.Contract;
+
 import java.util.ArrayList;
 
 public class DatabaseManager {
 
-    public ArrayList<Film> getFilms() {
+    public ArrayList<Film> getInitialFilms() {
         ArrayList<Film> films = new ArrayList<Film>();
 
         films.add(new Film("Harry Potter and the Sorcerer's Stone", 152, 7, "Chris Columbus", false));
@@ -14,11 +16,17 @@ public class DatabaseManager {
         return films;
     }
 
-    public Billboard getBillboard(ArrayList<Film> films) {
-        Billboard billboard = new Billboard();
+    public ArrayList<Room> getInitialRooms() {
+        ArrayList<Room> rooms = new ArrayList<Room>();
 
-        billboard.setFilms(films);
+        rooms.add(new Room(Contract.ROOM_STATE_AVAILABLE, false, new ArrayList<Seat>()));
+        rooms.add(new Room(Contract.ROOM_STATE_AVAILABLE, false, new ArrayList<Seat>()));
+        rooms.add(new Room(Contract.ROOM_STATE_FAULT, true, new ArrayList<Seat>()));
+        rooms.add(new Room(Contract.ROOM_STATE_AVAILABLE, false, new ArrayList<Seat>()));
 
-        return billboard;
+
+        return rooms;
     }
+
+
 }

@@ -2,6 +2,7 @@ package views;
 
 import models.Cinema;
 import models.Film;
+import models.Room;
 import utils.Contract;
 
 import java.util.ArrayList;
@@ -65,6 +66,17 @@ public class View {
         }
     }
 
+    private void showRooms() {
+        ArrayList<Room> rooms = cinema.getRooms();
+        printRooms(rooms);
+    }
+
+    private void printRooms(ArrayList<Room> rooms) {
+        for (Room room: rooms) {
+            System.out.println("Sala " + room.getId());
+        }
+    }
+
     private void doSelectedOption(int selectedOption) {
         switch (selectedOption) {
             case Contract.MENU_OPTION_SHOW_BILLBOARD:
@@ -72,6 +84,7 @@ public class View {
                 break;
 
             case Contract.MENU_OPTION_SHOW_ROOMS:
+                showRooms();
                 break;
 
             default:

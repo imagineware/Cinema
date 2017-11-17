@@ -30,9 +30,12 @@ public class Cinema {
         DatabaseManager database = new DatabaseManager();
         Billboard initialBillboard = new Billboard();
 
-        ArrayList<Film> initialFilms = database.getFilms();
+        ArrayList<Film> initialFilms = database.getInitialFilms();
         initialBillboard.setFilms(initialFilms);
 
+        ArrayList<Room> rooms = database.getInitialRooms();
+
         this.setBillboard(initialBillboard);
+        this.setRooms(rooms);
     }
 }

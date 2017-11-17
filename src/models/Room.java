@@ -7,9 +7,17 @@ public class Room {
     private int id;
     private boolean is3D;
     private ArrayList<Seat> seats;
+    private static int numberOfRooms = 0;
 
     public Room() {
 
+    }
+
+    public Room(int state, boolean is3D, ArrayList<Seat> seats) {
+        this.state = state;
+        this.is3D = is3D;
+        this.seats = seats;
+        this.id = numberOfRooms++;
     }
 
     public int getState() {
@@ -25,7 +33,7 @@ public class Room {
     }
 
     public void setId(int id) {
-        this.id = id;
+        id = id;
     }
 
     public boolean is3D() {
