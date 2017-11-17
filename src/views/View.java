@@ -1,10 +1,17 @@
+package views;
+
+import models.Cinema;
+import models.Film;
 import utils.Contract;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class View {
-    public View() {
+    private Cinema cinema;
 
+    public View(Cinema cinema) {
+        this.cinema = cinema;
     }
 
     public void performUserOption() {
@@ -43,9 +50,25 @@ public class View {
         }
     }
 
+    private void showBillboard() {
+        ArrayList<Film> films = getBillboardFilms();
+        printBillboardFilms(films);
+    }
+
+    private ArrayList<Film> getBillboardFilms() {
+        return cinema.getBillboard().getFilms();
+    }
+
+    private void printBillboardFilms(ArrayList<Film> films) {
+        for (Film film: films) {
+            System.out.println(film.getTitle());
+        }
+    }
+
     private void doSelectedOption(int selectedOption) {
         switch (selectedOption) {
             case Contract.MENU_OPTION_SHOW_BILLBOARD:
+                showBillboard();
                 break;
 
             case Contract.MENU_OPTION_SHOW_ROOMS:

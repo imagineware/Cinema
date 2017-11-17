@@ -25,4 +25,14 @@ public class Cinema {
     public void setRooms(ArrayList<Room> rooms) {
         this.rooms = rooms;
     }
+
+    public void chargeInitialDataToCinema() {
+        DatabaseManager database = new DatabaseManager();
+        Billboard initialBillboard = new Billboard();
+
+        ArrayList<Film> initialFilms = database.getFilms();
+        initialBillboard.setFilms(initialFilms);
+
+        this.setBillboard(initialBillboard);
+    }
 }

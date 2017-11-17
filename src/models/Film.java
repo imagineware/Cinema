@@ -3,12 +3,20 @@ package models;
 public class Film {
     private String title;
     private int minutes;
-    private int classification;
+    private int certificate;
     private String director;
     private boolean is3D;
 
     public Film() {
 
+    }
+
+    public Film(String title, int minutes, int classification, String director, boolean is3D) {
+        this.title = title;
+        this.minutes = minutes;
+        this.certificate = classification;
+        this.director = director;
+        this.is3D = is3D;
     }
 
     public String getTitle() {
@@ -27,12 +35,12 @@ public class Film {
         this.minutes = minutes;
     }
 
-    public int getClassification() {
-        return classification;
+    public int getCertificate() {
+        return certificate;
     }
 
-    public void setClassification(int classification) {
-        this.classification = classification;
+    public void setCertificate(int certificate) {
+        this.certificate = certificate;
     }
 
     public String getDirector() {
